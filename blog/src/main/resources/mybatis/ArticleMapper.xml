@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ArticleMapper">
+
+	<select id="selectByList" parameterType="hashmap" resultType="Article">
+		SELECT * FROM article
+		WHERE 1 = 1 AND type IN
+		<foreach collection="type" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		ORDER BY date DESC
+		LIMIT #{start}, #{offset}
+	</select>
+
+	<select id="selectByTime" parameterType="hashmap" resultType="Article">
+		SELECT * FROM article
+		WHERE 1 = 1 AND type IN
+		<foreach collection="type" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		AND date BETWEEN #{old} AND #{new}
+		ORDER BY date DESC
+		LIMIT #{start}, #{offset}
+	</select>
+
+	<select id="selectById" parameterType="int" resultType="Article">
+		SELECT * FROM article
+		WHERE 1 = 1 AND id = #{id}
+	</select>
+
+	<update id="updateById" parameterType="Article">
+		UPDATE article
+		SET
+			title = #{title},
+			type = #{type},
+			label = #{label},
+			brief = #{brief},
+			content = #{content},
+			date = #{date}
+		WHERE id = #{id}
+	</update>
+
+	<update id="insertAuto" parameterType="Article">
+		INSERT INTO article (title, type, label, brief, content, date)
+		VALUES (#{title}, #{type}, #{label}, #{brief}, #{content}, #{date})
+	</update>
+
+</mapper>

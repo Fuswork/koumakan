@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+	<!-- 根据id查找 -->
+	<select id="selectById" parameterType="int" resultType="User">
+		SELECT * FROM user
+		WHERE 1 = 1 AND id = #{id}
+	</select>
+
+	<!-- 登陆判断 -->
+	<select id="selectByName" parameterType="String" resultType="User">
+		SELECT * FROM user
+		WHERE 1 = 1 AND username = #{username}
+	</select>
+
+	<!--<insert id="insertAuto" parameterType="User">-->
+	<!--INSERT INTO user (name, password, email, date)-->
+	<!--VALUES (#{name}, #{password}, #{email}, #{date})-->
+	<!--</insert>-->
+
+	<update id="updateById" parameterType="User">
+		UPDATE user
+		SET username = #{username},
+			password = #{password},
+			email = #{email}
+		WHERE id = #{id}
+	</update>
+
+	<update id="updateLoginById" parameterType="hashmap">
+		UPDATE user
+		SET	lastlogin = #{lastlogin} ,
+			lastip = #{lastip}
+		WHERE id = #{id}
+	</update>
+
+</mapper>

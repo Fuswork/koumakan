@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD SQL Map Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="cc.koumakan.blog.entity.Article" alias="Article"/>
+		<typeAlias type="cc.koumakan.blog.entity.About" alias="About"/>
+		<typeAlias type="cc.koumakan.blog.entity.Contact" alias="Contact"/>
+		<typeAlias type="cc.koumakan.blog.entity.Navigate" alias="Navigate"/>
+		<typeAlias type="cc.koumakan.blog.entity.Reply" alias="Reply"/>
+		<typeAlias type="cc.koumakan.blog.entity.User" alias="User"/>
+	</typeAliases>
+
+</configuration>

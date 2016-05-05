@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ContactMapper">
+
+	<insert id="insertAuto" parameterType="Contact">
+		INSERT INTO contact (title, content, name, email, ip, date)
+		VALUES (#{title}, #{content}, #{name}, #{email}, #{ip}, #{date})
+	</insert>
+
+	<select id="selectAll" resultType="Contact">
+		SELECT * FROM contact
+		WHERE 1 = 1 AND isread = false
+		ORDER BY date
+	</select>
+
+	<update id="updateById" parameterType="int">
+		UPDATE contact
+		set isread = true
+		WHERE 1 = 1 AND id = #{id}
+	</update>
+
+</mapper>
